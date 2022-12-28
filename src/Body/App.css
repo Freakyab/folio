@@ -1,11 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 :root{
+    font-family: 'Poppins', sans-serif;
     --primary-color: #C30737;
     --secondary-color: #1F2833;
+    --third-color:black;
 }
 body {
     background: var(--secondary-color);
@@ -13,7 +16,7 @@ body {
 .main-div{
   
     display: flex;
-    position: relative;
+    position: absolute;
     top: 300px;
     left: 36%;
     color: white;
@@ -23,13 +26,19 @@ body {
     height: 300px;
     width: 500px;
     border-radius: 30px;
-    background-color: var(--primary-color);
+    background-color: var(--third-color);
+}
+.no_blur{
+    position: absolute;
+    filter: blur(0px);
+    z-index: 2;
 }
 .bg-style{
     position: absolute;
-    width: 200px;
-    height:200px;
-    opacity: 0.3;
+    top: -5%;
+    width: 300px;
+    height:300px;
+    opacity: 0.2;
     mix-blend-mode: screen;
     background-image: url(/public/imgs/Logos/b&wlogo.png);
     background-size: cover;
@@ -37,8 +46,17 @@ body {
 }
 .main-data{
     z-index: 1;
-    color: black;
+    color: var(--primary-color);
     font-family: sans-serif;
     font-size: 20px;
     font-weight: 200px;
+}
+.bg{
+    width: auto;
+    filter: blur(8px);
+    height: 100vh;
+    background-image: url(/public/imgs/Bg/Bg.jpg);
+    background-size: cover;
+    position: relative;
+    top: 100px;
 }
