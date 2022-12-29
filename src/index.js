@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import App from './Body/App';
 import Nav from './components/Navbar/Navbar'
 
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
