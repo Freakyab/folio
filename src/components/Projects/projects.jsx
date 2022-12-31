@@ -43,8 +43,6 @@ function Projects() {
                     </button>
                 </span>
                 {idNo.map((index) => (
-                    <ul>
-
                     <li key={index} style={setI(index,top)}>
                         <span className="mong">
                             <div className="data">
@@ -55,7 +53,6 @@ function Projects() {
                             </div>
                         </span>
                     </li>
-                    </ul>
                 ))}
             </div>
         </div>
