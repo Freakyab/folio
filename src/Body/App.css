@@ -102,7 +102,7 @@ body {
     z-index: 0;
     width: auto;
     filter: blur(8px);
-    height: 100vh;
+    height: 87vh;
     background-image: url(/public/imgs/Bg/Bg.jpg);
     background-size: cover;
     position: relative;

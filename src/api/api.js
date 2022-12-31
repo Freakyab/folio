@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import "../Body/App.css";
-// E:\webfolio\folio\src\Body\App.css
-export default function Api() {
-  const [displayData, setDisplayData] = useState([]);
-  const api = 'https://api-dusky-pi.vercel.app/api/mongo';
 
+export default function Api() {
+  const [displayData, setDisplayData] = useState();
   useEffect(() => {
-    fetch(api)
-      .then((response) => response.json())
-      .then((responseData) => {
-        console.log(responseData);
-        setDisplayData(responseData);
-      });
-  }, [displayData]);
+    async function fetchData() {
+      const response = await fetch('https://api-dusky-pi.vercel.app/api/mongo');
+      const data = await response.json();
+      const value = data.map((e) =>  (e.name));
+      console.log(data);
+      setDisplayData(value);
+    }
+    fetchData();
+  }, []);
 
   return (
     <div>
