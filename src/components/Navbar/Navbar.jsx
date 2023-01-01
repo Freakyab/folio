@@ -2,7 +2,8 @@ import "./style.css";
 import logo from "./logo.png"
 import { useRef } from "react";
 import App from "../../Body/App";
-import Projects from "../Projects/projects";
+// import Projects from "../Projects/projects";
+import Motion from "../Projects/motion";
 
 function Nav() {
     const Home = useRef(null);
@@ -26,12 +27,14 @@ function Nav() {
                     <li onClick={()=>scrollTo(Home)}><a href="#Home">Home</a></li>
                 </ul>
             </nav>
-            <span  className="border_App" ref ={Home}>
+            <div  className="border_App" ref ={Home}>
                 <App/>
-            </span>
-            <span className="border_Project" ref ={Project}>
-                <Projects/>
-            </span>
+                
+            </div>
+            <div className="border_Project" ref ={Project}>
+                {/* <Projects/> */}
+                <Motion />
+            </div>
         </>
     );
 }
