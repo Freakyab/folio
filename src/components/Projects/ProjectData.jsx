@@ -12,7 +12,7 @@ const divAnimateOdd = {
         opacity: 0.1,
     },
     onscreen: {
-        x: "70vw",
+        x: "50vw",
         opacity: 1,
         // rotate: 360,
         transition: {
@@ -28,7 +28,7 @@ const divAnimateEven = {
         opacity: 0.1,
     },
     onscreen: {
-        x: 60,
+        x: 350,
         opacity: 1,
         // rotate: 360,
         transition: {
@@ -80,13 +80,13 @@ function ProjectData() {
                     top: "7rem",
                     marginBottom: 30,
                 }}>
-                <h1 className="project">Project</h1>
+                <h1 className="project">Projects</h1>
 
                 {idNo.map((index) => {
                     const Percentage = per[index - 1]
                     return (
                         <motion.div className="Box"
-                            style={{ marginBottom: 150 }}
+                            style={{ marginBottom: 100 }}
                             initial={"offscreen"}
                             whileInView={"onscreen"}
                             viewport={{ once: false }}
