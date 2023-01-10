@@ -24,7 +24,7 @@ const divAnimateOdd = {
 }
 const divAnimateEven = {
     offscreen: {
-        x: "70vw",
+        x: "50vw",
         opacity: 0.1,
     },
     onscreen: {
