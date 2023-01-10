@@ -3,7 +3,7 @@ import logo from "./logo.png"
 import { useRef } from "react";
 import App from "../../Body/App";
 // import Projects from "../Projects/projects";
-import Motion from "../Projects/motion";
+import ProjectData from "../Projects/ProjectData";
 
 function Nav() {
     const Home = useRef(null);
@@ -33,7 +33,7 @@ function Nav() {
             </div>
             <div className="border_Project" ref ={Project}>
                 {/* <Projects/> */}
-                <Motion />
+                <ProjectData />
             </div>
         </>
     );

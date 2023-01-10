@@ -1,0 +1,44 @@
+.project{
+    color: #C30737;
+    /* position: absolute; */
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin: 2rem 0;
+}
+.Box{
+    position: relative;
+    width: 25rem;
+    border-radius: 10px;    
+    height: 10rem;
+    /* height: 100%; */
+    background: #fff;
+}
+.ProjectData{
+    display: flex;
+    flex-direction: row;
+}
+.Header{
+    position: relative;
+    left: 30px;
+}
+.description{
+    position: relative;
+    font-size: 20px;
+    left: 30px;
+    width: 300px;
+    height: 50px;
+}
+svg{
+    position: absolute;
+    top: 50px;
+    right:10px;
+}
+.icon{
+    position: relative;
+    top: 20%;
+    left: 10%;
+    width: 30px;
+    height: 30px;
+    color: black;
+}
