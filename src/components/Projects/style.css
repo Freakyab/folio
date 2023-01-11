@@ -1,5 +1,5 @@
 .project{
-    color: #C30737;
+    color:var(--primary-color);
     /* position: absolute; */
     font-size: 2.5rem;
     font-weight: 700;
@@ -13,6 +13,7 @@
     height: 10rem;
     /* height: 100%; */
     background: #fff;
+    box-shadow: 10px 30px 10px rgba(0,0,0);
 }
 .ProjectData{
     display: flex;
@@ -41,4 +42,55 @@ svg{
     width: 30px;
     height: 30px;
     color: black;
+}
+.TypingGif{
+    position: absolute;
+    top: 5%;
+    left: 10%;
+    width: 200px;
+    height: 300px;
+    color: black;
+}
+.arrow{
+    position: absolute;
+    top: 10%;
+    left: 80%;
+    transform: rotate(270deg)translate(-50%, -50%);
+}
+.arrow span{
+    display: block;
+    width: 30px;
+    height: 30px;
+    border-bottom: 5px solid #06A8FF;
+    border-right: 5px solid #06A8FF;
+    transform: rotate(45deg);
+    margin: -10px;
+    animation: scroll 2s infinite;
+}
+.arrow span:nth-child(2){
+    animation-delay: -.2s;
+}
+.arrow span:nth-child(3){
+    animation-delay: -.4s;
+}
+@keyframes scroll{
+    0%{
+        opacity: 0;
+        transform: rotate(45deg) translate(-20px, -20px);
+    }
+    50%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+        transform: rotate(45deg) translate(-20px, -20px);
+    }
+}
+h3{
+    position: relative;
+    top: 30%;
+    left: 10%;
+    width: 30px;
+    height: 30px;
+    color: var(--primary-color);
 }

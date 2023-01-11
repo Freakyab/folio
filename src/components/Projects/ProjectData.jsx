@@ -3,7 +3,7 @@ import { SiPython } from "react-icons/si";
 import { IoLogoNodejs } from 'react-icons/io';
 import { useEffect, useState } from "react";
 import "./style.css";
-import { motion } from "framer-motion";
+import { motion, delay } from "framer-motion";
 import CircularProgress from "./CircularProgress";
 
 const divAnimateOdd = {
@@ -40,9 +40,12 @@ const divAnimateEven = {
 
 
 function ProjectData() {
+    const [hover, setHover] = useState(false);
+    const [hoverRef, setHoverRef] = useState(null);
+    const [indexHover, setIndexHover] = useState(0);
     const [idNo, setIdNo] = useState([]);
     const [title, setTitle] = useState([]);
-    const [description, setDescription] = useState([]);
+    // const [description, setDescription] = useState([]);
     const [link, setLink] = useState([]);
     const [per, setPer] = useState([]);
     const [type, setType] = useState([]);
@@ -53,23 +56,20 @@ function ProjectData() {
             const data = await response.json();
             setIdNo(data.map((e) => (e.idno)));
             setTitle(data.map((e) => (e.title)));
-            setDescription(data.map((e) => (e.des)));
+            // setDescription(data.map((e) => (e.des)));
             setLink(data.map((e) => (e.link)));
             setPer(data.map((e) => (e.per)));
             setType(data.map((e) => (e.type)));
         }
         fetchData();
     }, []);
-    
-    function typeSelection(e)
-    {
-        if(e==="python")
-        {
-            return <SiPython className="icon"/>
+
+    function typeSelection(e) {
+        if (e === "python") {
+            return <SiPython className="icon" />
         }
-        else if(e==="node")
-        {
-            return <IoLogoNodejs className="icon"/>   
+        else if (e === "node") {
+            return <IoLogoNodejs className="icon" />
         }
     }
     return (
@@ -81,56 +81,85 @@ function ProjectData() {
                     marginBottom: 30,
                 }}>
                 <h1 className="project">Projects</h1>
+                {/* <img className="TypingGif"src="https://media.giphy.com/media/M9gbBd9nbDrOTu1Mqx/giphy.gif" width="200"/> */}
 
                 {idNo.map((index) => {
-                    const Percentage = per[index - 1]
+                    const Percentage = per[index - 1];
                     return (
-                        <motion.div className="Box"
-                            style={{ marginBottom: 100 }}
-                            initial={"offscreen"}
-                            whileInView={"onscreen"}
-                            viewport={{ once: false }}
+                        <>
+                            <motion.div
+                                ref={(element) => setHoverRef(element)}
+                                onHoverStart={() => setHover(index)}
+                                onHoverEnd={() => setHover(null)}
 
-                            variants={{
-                                offscreen: (index % 2 === 0 ? divAnimateEven.offscreen : divAnimateOdd.offscreen),
+                            >
+                                {hover === index && (
+                                    <motion.div
+                                        style={{
+                                            position: "absolute",
+                                            left: index % 2 === 0 ? "60vw" : "20vw",
+                                            color: "white",
+                                        }}
+                                        initial={{ opacity: 0 }}
+                                        animate={{ opacity: 1 }}
+                                        transition={{ delay: 0.5 }}
+                                    >
+                                        this is my project about password manager
+                                    </motion.div>
+                                )}
+                                <motion.div className="Box"
+                                    style={{ marginBottom: 100 }}
+                                    initial={"offscreen"}
+                                    whileInView={"onscreen"}
+                                    viewport={{ once: false }}
 
-                                onscreen: (index % 2 === 0 ? divAnimateEven.onscreen : divAnimateOdd.onscreen),
-                            }}
+                                    variants={{
+                                        offscreen: (index % 2 === 0 ? divAnimateEven.offscreen : divAnimateOdd.offscreen),
 
-                        >
-                            <span className="ProjectData">
-                                <div>
-                                    <span className="Header">
-                                        <h1>
-                                            {title[index - 1]}</h1>
+                                        onscreen: (index % 2 === 0 ? divAnimateEven.onscreen : divAnimateOdd.onscreen),
+                                    }}
+
+                                >
+                                    <span className="ProjectData">
+                                        <div>
+                                            <span className="Header">
+                                                <h1>
+                                                    {title[index - 1]}</h1>
+                                            </span>
+                                            <div className="description">
+
+                                                {/* <p className="description">{description[index - 1]}</p> */}
+                                                <div className="arrow">
+                                                    <span></span>
+                                                    <span></span>
+                                                    <span></span>
+                                                </div>
+                                                <h3>COMPLETE</h3>
+                                            </div>
+                                            <span>
+
+                                                <a href={link[index - 1]} target="_blank" rel="noreferrer">
+                                                    {typeSelection(type[index - 1])}
+                                                </a>
+
+                                            </span>
+
+                                            {/* <button onClick={()=>{handleClick()}}>click me</button> */}
+                                        </div>
+                                        <div>
+                                            <CircularProgress
+                                                size={90}
+                                                strokeWidth={10}
+                                                percentage={Percentage}
+                                                color="BLACK"
+
+                                            // variants={{CircularProgressDelay}}
+                                            />
+                                        </div>
                                     </span>
-                                    <div className="description">
-
-                                        {/* <p className="description">{description[index - 1]}</p> */}
-                                        <p>this is my project about password manager</p>
-                                    </div>
-                                    <span>
-
-                                        <a href={link[index - 1]} target="_blank" rel="noreferrer">
-                                          { typeSelection(type[index-1])}
-                                        </a>
-
-                                    </span>
-
-                                    {/* <button onClick={()=>{handleClick()}}>click me</button> */}
-                                </div>
-                                <div>
-                                    <CircularProgress
-                                        size={90}
-                                        strokeWidth={10}
-                                        percentage={Percentage}
-                                        color="BLACK"
-
-                                    // variants={{CircularProgressDelay}}
-                                    />
-                                </div>
-                            </span>
-                        </motion.div>
+                                </motion.div>
+                            </motion.div>
+                        </>
                     );
                 })}
             </div>
