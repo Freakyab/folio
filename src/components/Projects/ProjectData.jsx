@@ -1,9 +1,12 @@
 import React from "react";
 import { SiPython } from "react-icons/si";
 import { IoLogoNodejs } from 'react-icons/io';
+import { SiGithub } from "react-icons/si";
 import { useEffect, useState } from "react";
 import "./style.css";
-import { motion, delay } from "framer-motion";
+import { motion} from "framer-motion";
+import App from "./description";
+
 import CircularProgress from "./CircularProgress";
 
 const divAnimateOdd = {
@@ -28,7 +31,7 @@ const divAnimateEven = {
         opacity: 0.1,
     },
     onscreen: {
-        x: 350,
+        x: 250,
         opacity: 1,
         // rotate: 360,
         transition: {
@@ -43,7 +46,6 @@ function ProjectData() {
     const [backgroundColor, setBackgroundColor] = useState(null);
     const [hover, setHover] = useState(false);
     const [hoverRef, setHoverRef] = useState(null);
-    const [indexHover, setIndexHover] = useState(0);
     const [idNo, setIdNo] = useState([]);
     const [Image,setImage]=useState([]);
     const [title, setTitle] = useState([]);
@@ -51,7 +53,7 @@ function ProjectData() {
     const [link, setLink] = useState([]);
     const [per, setPer] = useState([]);
     const [type, setType] = useState([]);
-    // const [Percentage, setPercentage] = useState(0);
+
     useEffect(() => {
         async function fetchData() {
             const response = await fetch('https://api-dusky-pi.vercel.app/api/ProjectData');
@@ -62,11 +64,11 @@ function ProjectData() {
             setLink(data.map((e) => (e.link)));
             setPer(data.map((e) => (e.per)));
             setImage(data.map((e) => (e.image)));
-            console.log(Image);
             setType(data.map((e) => (e.type)));
         }
         fetchData();
     }, []);
+    
     const handleClick = (e) => {
         setBackgroundColor(Image[e]);
     };
@@ -107,19 +109,29 @@ function ProjectData() {
 
                                 >
                                     {hover === index && (
-                                        <motion.div
+                                        <motion.div className="SideDiv"
                                             style={{
                                                 position: "absolute",
-                                                left: index % 2 === 0 ? "60vw" : "20vw",
+                                                display: "flex",
+                                                flexDirection: "column",
+                                                left: index % 2 === 0 ? "50vw" : "16vw",
+                                                padding:20,
                                                 color: "white",
-                                                // backgroundColor: backgroundColor
+                                                height: "25vh",
+                                                overflow: "auto",
+                                                boxShadow: "inset 0 0px 10px 0 green",
                                             }}
                                             initial={{ opacity: 0 }}
                                             animate={{ opacity: 1 }}
                                             transition={{ delay: 0.5 }}
-
                                         >
-                                            {description[index - 1]}
+                                            <h1 className = "DescriptionHeader">Details</h1>
+                                            <App/>
+                                            {/* <h3>{description[index - 1]}</h3> */}
+                                            <div className="link">
+                                                <p> Check source code
+                                                <a href={link[index- 1]} target="_blank" rel="noreferrer"><SiGithub className="SourceCode"/></a></p>
+                                            </div>
                                         </motion.div>
                                     )}
                                     <motion.div className="Box"
@@ -143,24 +155,18 @@ function ProjectData() {
                                                         {title[index - 1]}</h1>
                                                 </span>
                                                 <div className="description">
-
-                                                    {/* <p className="description">{description[index - 1]}</p> */}
                                                     <div className="arrow">
                                                         <span></span>
                                                         <span></span>
                                                         <span></span>
                                                     </div>
-                                                    <h3>COMPLETE</h3>
+                                                    <h3 className="Complete">COMPLETED</h3>
                                                 </div>
                                                 <span>
-
                                                     <a href={link[index - 1]} target="_blank" rel="noreferrer">
                                                         {typeSelection(type[index - 1])}
                                                     </a>
-
                                                 </span>
-
-                                                {/* <button onClick={()=>{handleClick()}}>click me</button> */}
                                             </div>
                                             <div>
                                                 <CircularProgress
@@ -168,8 +174,6 @@ function ProjectData() {
                                                     strokeWidth={10}
                                                     percentage={Percentage}
                                                     color="BLACK"
-
-                                                // variants={{CircularProgressDelay}}
                                                 />
                                             </div>
                                         </span>
@@ -184,5 +188,4 @@ function ProjectData() {
         </>
     );
 }
-
 export default ProjectData;

@@ -8,7 +8,6 @@ export default function Api() {
       const response = await fetch('https://api-dusky-pi.vercel.app/api/mongo');
       const data = await response.json();
       const value = data.map((e) =>  (e.name));
-      console.log(data);
       setDisplayData(value);
     }
     fetchData();
