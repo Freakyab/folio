@@ -1,40 +1,49 @@
 import "./style.css";
-import logo from "./logo.png"
-import { useRef } from "react";
-import App from "../../Body/App";
-// import Projects from "../Projects/projects";
-import ProjectData from "../Projects/ProjectData";
+import {Link}  from 'react-scroll' 
+import Home from "../Home/home";
+import AboutUs from "../AboutUs/aboutus";
+import Contact from "../Contact/contact";
 
 function Nav() {
-    const Home = useRef(null);
-    const Project = useRef(null);
-    const Contact = useRef(null);
+    const menu = [
+        {
+            id: 1,
+            title: "Home",
+        },
+        {
+            id: 2,
+            title: "AboutUs",
+        },
+        {
+            id: 3,
+            title: "Contact",
+        },
+        ,{
+            id: 4,
+            title: "Projects",
+        }
+    ]
 
-    const scrollTo = (ref) => {
-        window.scrollTo({
-            top: ref.current.offsetTop,
-            behavior: "smooth",
-        });
-    };
     return (
         <>
-            <nav>
-                {/* <div className="logo_box"/> */}
-                <img src={logo} className="logo_box" alt="logo" />
-                <ul>
-                    <li onClick={()=>scrollTo(Contact)} ><a href="#Contact">Contact</a></li>
-                    <li onClick={()=>scrollTo(Project)}><a href="#Projects">Projects</a></li>
-                    <li onClick={()=>scrollTo(Home)}><a href="#Home">Home</a></li>
-                </ul>
-            </nav>
-            <div  className="border_App" ref ={Home}>
-                <App/>
-                
-            </div>
-            <div className="border_Project" ref ={Project}>
-                {/* <Projects/> */}
-                <ProjectData />
-            </div>
+            <header>
+                <nav>
+                    <ul>
+                        {menu.map((item) => (
+                            <li key={item.id}>
+                                    <Link to={item.title} smooth={true} duration={1000} offset={-70}>{item.title}</Link>
+                            </li>
+                        ))}
+                    </ul>
+                </nav>
+            </header>
+            <main>
+                {menu.map((item) => (
+                    <div key={item.id} id={item.title} className ="container">
+                        {item.title === "Home" ? <Home /> : item.title === "AboutUs" ? <AboutUs /> : item.title === "Contact" ? <Contact /> : undefined}
+                    </div>
+                ))}
+            </main>
         </>
     );
 }

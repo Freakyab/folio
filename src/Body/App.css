@@ -6,19 +6,13 @@
 }
 :root{
     font-family: 'Poppins', sans-serif;
-    --primary-color: #C30737;
-    --secondary-color: #1F2833;
-    --third-color:black;
-    /* --fourth-color: #953553; */
-    /* --fourth-color: #893DC7; */
-    --fivth-color: rgb(225, 140, 36);
-    --fourth-color: rgb(36, 225, 143);
-}
-body {
-    background: var(--secondary-color);
+    --primary-color: #2196f3;
+    --secondary-color: #292d3b;
+    --third-color:rgb(19, 19, 19);
+    --fourth-color: rgb(22, 183, 205);
+    background: var(--third-color);
 }
 .main-div{
-  
     display: flex;
     position: absolute;
     top: 180px;
@@ -103,9 +97,9 @@ body {
     width: auto;
     filter: blur(8px);
     height: 87vh;
-    background-image: url(/public/imgs/Bg/Bg.jpg);
-    background-size: cover;
-    position: relative;
+    /* background-image: url(/public/imgs/Bg/logo.jpg); */
+    /* background-size: cover; */
+    /* position: relative; */
     top: 100px;
 }
 /* .about{

@@ -1,0 +1,9 @@
+.contactDiv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    background-color: var(--third-color);
+    height: 100vh;
+}
