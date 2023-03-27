@@ -18,7 +18,7 @@ function Nav() {
             id: 3,
             title: "Contact",
         },
-        ,{
+        {
             id: 4,
             title: "Projects",
         }

@@ -41,7 +41,7 @@ const TypeEffect = () => {
                 setArrayIndex((arrayIndex + 1) % array.length);
                 setIter(0);
             } else {
-                setIter(iter + 0.4);
+                setIter(iter + 0.1);
             }
 
             if (arrayIndex === array.length - 1 && iter >= array[arrayIndex].length) {
