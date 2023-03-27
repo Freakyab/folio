@@ -2,13 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 
-import Nav from './components/Navbar/navbar'
-
+import Navbar from "./components/Navbar/navbar";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Nav/>
+    <Navbar/>
 
   </React.StrictMode>
 );
